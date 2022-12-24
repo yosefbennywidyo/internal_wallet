@@ -1,0 +1,55 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+first_user_topup:
+  amount: 1000
+  owner_id: <%= Digest::MD5.hexdigest 'user_1@test.com' %>
+  sender_id: <%= Digest::MD5.hexdigest "wallet for user_1@test.com created at 2022-12-24 23:37:49 +0800" %>
+  receiver_id: <%= Digest::MD5.hexdigest "wallet for user_1@test.com created at 2022-12-24 23:37:49 +0800" %>
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{1}" %>
+  description: Top up
+  type: Debit
+
+second_user_topup:
+  amount: 
+  owner_id: <%= Digest::MD5.hexdigest 'user_2@test.com' %>
+  sender_id: <%= Digest::MD5.hexdigest "wallet for user_2@test.com created at 2022-12-24 23:37:49 +0800" %>
+  receiver_id: <%= Digest::MD5.hexdigest "wallet for user_2@test.com created at 2022-12-24 23:37:49 +0800" %>
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{2}" %>
+  description: Top up
+  type: Debit
+
+first_team_topup:
+  amount: 
+  owner_id: <%= Digest::MD5.hexdigest 'team_1@test.com' %>
+  sender_id: <%= Digest::MD5.hexdigest "wallet for team_1@test.com created at 2022-12-24 23:37:49 +0800" %>
+  receiver_id: <%= Digest::MD5.hexdigest "wallet for team_1@test.com created at 2022-12-24 23:37:49 +0800" %>
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{3}" %>
+  description: Top up
+  type: Debit
+
+second_team_topup:
+  amount: 
+  owner_id: <%= Digest::MD5.hexdigest 'team_2@test.com' %>
+  sender_id: <%= Digest::MD5.hexdigest "wallet for team_2@test.com created at 2022-12-24 23:37:49 +0800" %>
+  receiver_id: <%= Digest::MD5.hexdigest "wallet for team_2@test.com created at 2022-12-24 23:37:49 +0800" %>
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{4}" %>
+  description: Top up
+  type: Debit
+
+first_stock_topup:
+  amount: 
+  owner_id: <%= Digest::MD5.hexdigest 'stock_1@test.com' %>
+  sender_id: <%= Digest::MD5.hexdigest "wallet for stock_1@test.com created at 2022-12-24 23:37:49 +0800" %>
+  receiver_id: <%= Digest::MD5.hexdigest "wallet for stock_1@test.com created at 2022-12-24 23:37:49 +0800" %>
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{5}" %>
+  description: Top up
+  type: Debit
+
+second_stock_topup:
+  amount: 
+  owner_id: <%= Digest::MD5.hexdigest 'stock_2@test.com' %>
+  sender_id: <%= Digest::MD5.hexdigest "wallet for stock_1@test.com created at 2022-12-24 23:37:49 +0800" %>
+  receiver_id: <%= Digest::MD5.hexdigest "wallet for stock_1@test.com created at 2022-12-24 23:37:49 +0800" %>
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{6}" %>
+  description: Top up
+  type: Debit

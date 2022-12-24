@@ -2,13 +2,13 @@ require "test_helper"
 
 class WalletTest < ActiveSupport::TestCase
   def setup
-    @user = users(:one)
+    @user = users(:first_user)
     @user_wallet = @user.build_wallet
 
-    @team = teams(:one)
+    @team = teams(:first_team)
     @team_wallet = @team.build_wallet
 
-    @stock = stocks(:one)
+    @stock = stocks(:first_stock)
     @stock_wallet = @stock.build_wallet
   end
   

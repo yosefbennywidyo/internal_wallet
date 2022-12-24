@@ -2,11 +2,10 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @first_user = users(:one)
-    wallet = wallets(:one)
+    @first_user = users(:first_user)
     @first_user_wallet = @first_user.wallet
-    @user_without_name = users(:first_invalid)
-    @user_without_email = users(:second_invalid)
+    @user_without_name = users(:first_invalid_user)
+    @user_without_email = users(:second_invalid_user)
   end
 
   test 'valid user' do

@@ -1,10 +1,15 @@
 if ENV["RAILS_ENV"] ||= "test"
   require 'simplecov'
-  SimpleCov.start
+  SimpleCov.start 'rails' do
+    add_filter 'test'
+  end
 end
-
 require_relative "../config/environment"
 require "rails/test_help"
+require "minitest/rails"
+
+# Consider setting MT_NO_EXPECTATIONS to not add expectations to Object.
+# ENV["MT_NO_EXPECTATIONS"] = true
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers

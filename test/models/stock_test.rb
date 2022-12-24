@@ -2,7 +2,7 @@ require "test_helper"
 
 class StockTest < ActiveSupport::TestCase
   def setup
-    @stock = stocks(:one)
+    @stock = stocks(:first_stock)
   end
 
   test 'valid stock' do

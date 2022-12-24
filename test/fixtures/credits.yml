@@ -1,0 +1,49 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+first_user_credit_to_second_user:
+  amount: 100.99
+  owner_id: <%= Digest::MD5.hexdigest 'user_1@test.com' %>
+  sender_id: <%= Digest::MD5.hexdigest "wallet for user_1@test.com created at 2022-12-24 23:37:49 +0800" %>
+  receiver_id: <%= Digest::MD5.hexdigest "wallet for user_2@test.com created at 2022-12-24 23:37:49 +0800" %>
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{7}" %>
+  description: allowance
+
+second_user_credit_to_first_user:
+  amount: 100.99
+  owner_id: user_wallet_two.owner_id
+  sender_id: user_wallet_two.address
+  receiver_id: user_wallet_one.address
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{8}" %>
+  description: allowance
+
+first_team_credit_to_second_team:
+  amount: 100.99
+  owner_id: team_wallet_one.owner_id
+  sender_id: team_wallet_one.address
+  receiver_id: team_wallet_two.wallet.address
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{9}" %>
+  description: allowance
+
+second_team_credit_to_first_team:
+  amount: 9.99
+  owner_id: team_wallet_two.owner_id
+  sender_id: team_wallet_two.wallet.address
+  receiver_id: team_wallet_one.address
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{10}" %>
+  description: allowance
+
+first_stock_credit_to_second_stock:
+  amount: 100.99
+  owner_id: stock_wallet_one.owner_id
+  sender_id: stock_wallet_one.wallet.address
+  receiver_id: stock_wallet_two.wallet.address
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{11}" %>
+  description: allowance
+
+second_stock_credit_to_first_stock:
+  amount: 9.99
+  owner_id: stock_wallet_two.owner_id
+  sender_id: stock_wallet_two.wallet.address
+  receiver_id: stock_wallet_one.wallet.address
+  number: <%= Digest::MD5.hexdigest "#{Time.now}" + "#{12}" %>
+  description: allowance
