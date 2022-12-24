@@ -1,0 +1,43 @@
+<div class="col">
+  <h1>Transaction Histories</h1>
+  <h5>Wallet balance: <%= @wallet_balance %> </h5>
+
+  <div id="transaction_histories">
+  <% puts "@current_user.inspect #{@current_user.inspect}" %>
+    <% if @current_user.transaction_histories.present? %>
+      <% @transaction_histories.each do |transaction_history| %>
+        <div id="<%= dom_id transaction_history %>">
+          <p>
+            <strong>Sender:</strong>
+            <%= transaction_history.sender_id %>
+          </p>
+
+          <p>
+            <strong>Receiver:</strong>
+            <%= transaction_history.receiver_id %>
+          </p>
+
+          <p>
+            <strong>Amount:</strong>
+            <%= transaction_history.amount %>
+          </p>
+
+          <p>
+            <strong>Description:</strong>
+            <%= transaction_history.description %>
+          </p>
+
+        </div>
+
+      <% end %>
+      <%= render "transaction_histories/debit" %>
+      <%= render "transaction_histories/credit" %>
+    <% else %>
+      <%= render "transaction_histories/debit" %>
+      <%= render "transaction_histories/credit" %>
+    <% end %>
+    <% puts "@transfer_list.inspect #{@transfer_list.inspect}" %>
+    <% puts "@transfer_list - [@current_user.code] #{@transfer_list - [@current_user.code]}" %>
+    <% puts "@transfer_list #{@transfer_list}" %>
+  </div>
+</div>

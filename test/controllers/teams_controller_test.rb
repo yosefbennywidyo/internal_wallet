@@ -20,7 +20,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
       post teams_url, params: { team: { email: 'team-3@test.com', name: 'Team-3' } }
     end
 
-    assert_redirected_to team_url(Team.last)
+    assert_redirected_to team_url(Team.last.code)
   end
 
   test "should not create team with empty name" do
@@ -34,33 +34,33 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show team" do
-    get team_url(@team)
+    get team_url(@team.code)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_team_url(@team)
+    get edit_team_url(@team.code)
     assert_response :success
   end
 
   test "should update team" do
-    patch team_url(@team), params: { team: { email: 'team-update@test.com', name: 'team-update' } }
-    assert_redirected_to team_url(@team)
+    patch team_url(@team.code), params: { team: { email: 'team-update@test.com', name: 'team-update' } }
+    assert_redirected_to team_url(@team.code)
   end
 
   test "should not update team with empty name" do
-    patch team_url(@team), params: { team: { email: 'team-update@test.com', name: nil } }
+    patch team_url(@team.code), params: { team: { email: 'team-update@test.com', name: nil } }
     assert_response 422
   end
 
   test "should not update team with empty email" do
-    patch team_url(@team), params: { team: { email: nil, name: 'team-update' } }
+    patch team_url(@team.code), params: { team: { email: nil, name: 'team-update' } }
     assert_response 422
   end
 
   test "should destroy team" do
     assert_difference("Team.count", -1) do
-      delete team_url(@team)
+      delete team_url(@team.code)
     end
 
     assert_redirected_to teams_url

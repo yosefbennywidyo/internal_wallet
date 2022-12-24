@@ -1,12 +1,12 @@
-if ENV["RAILS_ENV"] ||= "test"
-  require 'simplecov'
-  SimpleCov.start 'rails' do
-    add_filter 'test'
-  end
+require 'simplecov'
+SimpleCov.start do
+  add_filter 'test'
 end
+
+ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
-require "minitest/rails"
+require "minitest/autorun"
 
 # Consider setting MT_NO_EXPECTATIONS to not add expectations to Object.
 # ENV["MT_NO_EXPECTATIONS"] = true

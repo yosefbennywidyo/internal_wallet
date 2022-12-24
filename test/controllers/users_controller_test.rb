@@ -20,7 +20,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { email: 'user-5@test.com', name: 'User-5' } }
     end
 
-    assert_redirected_to user_url(User.last)
+    assert_redirected_to user_url(User.last.code)
   end
 
   test "should not create user with empty name" do
@@ -34,33 +34,33 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show user" do
-    get user_url(@user)
+    get user_url(@user.code)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_user_url(@user)
+    get edit_user_url(@user.code)
     assert_response :success
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { email: 'user-update@test.com', name: 'user-update' } }
-    assert_redirected_to user_url(@user)
+    patch user_url(@user.code), params: { user: { email: 'user-update@test.com', name: 'user-update' } }
+    assert_redirected_to user_url(@user.code)
   end
 
   test "should not update user with empty name" do
-    patch user_url(@user), params: { user: { email: 'user-update@test.com', name: nil } }
+    patch user_url(@user.code), params: { user: { email: 'user-update@test.com', name: nil } }
     assert_response 422
   end
 
   test "should not update user with empty email" do
-    patch user_url(@user), params: { user: { email: nil, name: 'user-update' } }
+    patch user_url(@user.code), params: { user: { email: nil, name: 'user-update' } }
     assert_response 422
   end
 
   test "should destroy user" do
     assert_difference("User.count", -1) do
-      delete user_url(@user)
+      delete user_url(@user.code)
     end
 
     assert_redirected_to users_url

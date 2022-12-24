@@ -20,7 +20,7 @@ class StocksControllerTest < ActionDispatch::IntegrationTest
       post stocks_url, params: { stock: { email: 'stock-3@test.com', name: 'Stock-3' } }
     end
 
-    assert_redirected_to stock_url(Stock.last)
+    assert_redirected_to stock_url(Stock.last.code)
   end
 
   test "should not create stock with empty name" do
@@ -34,33 +34,33 @@ class StocksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show stock" do
-    get stock_url(@stock)
+    get stock_url(@stock.code)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_stock_url(@stock)
+    get edit_stock_url(@stock.code)
     assert_response :success
   end
 
   test "should update stock" do
-    patch stock_url(@stock), params: { stock: { email: 'stock-update@test.com', name: 'stock-update' } }
-    assert_redirected_to stock_url(@stock)
+    patch stock_url(@stock.code), params: { stock: { email: 'stock-update@test.com', name: 'stock-update' } }
+    assert_redirected_to stock_url(@stock.code)
   end
 
   test "should not update stock with empty name" do
-    patch stock_url(@stock), params: { stock: { email: 'stock-update@test.com', name: nil } }
+    patch stock_url(@stock.code), params: { stock: { email: 'stock-update@test.com', name: nil } }
     assert_response 422
   end
 
   test "should not update stock with empty email" do
-    patch stock_url(@stock), params: { stock: { email: nil, name: 'stock-update' } }
+    patch stock_url(@stock.code), params: { stock: { email: nil, name: 'stock-update' } }
     assert_response 422
   end
 
   test "should destroy stock" do
     assert_difference("Stock.count", -1) do
-      delete stock_url(@stock)
+      delete stock_url(@stock.code)
     end
 
     assert_redirected_to stocks_url

@@ -30,10 +30,10 @@ class CreditTest < ActiveSupport::TestCase
   end
   
   test 'User able to do Credit transaction' do
-    assert_equal 900, @first_user.wallet.reload.balance
+    assert_equal 900, @first_user.transaction_histories.reload.sum(:amount).to_i
   end
 
   test 'User able to do receive transfer transaction' do
-    assert_equal 100, @second_user.wallet.reload.balance
+    assert_equal 100, @second_user.transaction_histories.reload.sum(:amount).to_i
   end
 end
