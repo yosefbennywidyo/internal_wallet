@@ -10,27 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_22_062410) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_22_163950) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "stocks", force: :cascade do |t|
+    t.string "code"
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_stocks_on_code", unique: true
   end
 
   create_table "teams", force: :cascade do |t|
+    t.string "code"
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_teams_on_code", unique: true
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "code"
     t.string "name"
     t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_users_on_code", unique: true
+  end
+
+  create_table "wallets", force: :cascade do |t|
+    t.string "owner_id"
+    t.decimal "balance", precision: 8, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
