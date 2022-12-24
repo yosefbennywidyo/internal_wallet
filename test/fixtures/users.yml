@@ -1,9 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  code: <%= Digest::MD5.hexdigest 'user_1@test.com' %>
   name: User-1
   email: user_1@test.com
 
 two:
+  code: <%= Digest::MD5.hexdigest 'user_2@test.com' %>
   name: User-2
   email: user_2@test.com
+
+first_invalid:
+  code: <%= Digest::MD5.hexdigest 'user_3@test.com' %>
+  name: 
+  email: user_3@test.com
+
+second_invalid:
+  code: <%= Digest::MD5.hexdigest 'user_4@test.com' %>
+  name: User-3
+  email: 

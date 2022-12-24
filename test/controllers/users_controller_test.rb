@@ -17,19 +17,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference("User.count") do
-      post users_url, params: { user: { email: 'user-3@test.com', name: 'User-3' } }
+      post users_url, params: { user: { email: 'user-5@test.com', name: 'User-5' } }
     end
 
     assert_redirected_to user_url(User.last)
   end
 
   test "should not create user with empty name" do
-    post users_url, params: { user: { email: 'user-3@test.com', name: nil } }
+    post users_url, params: { user: { email: 'user-5@test.com', name: nil } }
     assert_response 422
   end
 
   test "should not create user with empty email" do
-    post users_url, params: { user: { email: nil, name: 'Team-3' } }
+    post users_url, params: { user: { email: nil, name: 'Team-5' } }
     assert_response 422
   end
 
