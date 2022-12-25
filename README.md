@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Internal Wallet
 
-Things you may want to cover:
+### Requirements
 
-* Ruby version
+* Ruby version: 3.1.2p20
+* Rails version: 7.0.4
 
-* System dependencies
+### Test
 
-* Configuration
+```bash
+rails db:create
+rails db:migrate
 
-* Database creation
+rails assets:precompile
 
-* Database initialization
+rails test
+# 47.48% covered
+```
 
-* How to run the test suite
+### Development
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rails db:create
+rails db:migrate
 
-* Deployment instructions
-
-* ...
+foreman start -f Procfile.dev
+```
